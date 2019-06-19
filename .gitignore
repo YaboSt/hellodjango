@@ -1,4 +1,1 @@
-env/
-sqlalchemy/
-polls/__pycache__/
 .vscode/

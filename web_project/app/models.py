@@ -8,12 +8,18 @@ class Musician(models.Model):
     last_name = models.CharField(max_length=50)
     instrument = models.CharField(max_length=100)
 
+    def __str__(self):
+        return str(self.first_name) + str(self.last_name)
+
 
 class Album(models.Model):
     artist = models.ForeignKey(Musician, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     release_date = models.DateField()
     num_stars = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
 
 # class Person(models.Model):
@@ -27,12 +33,18 @@ class Album(models.Model):
 
 
 class Manufacturer(models.Model):
-    # ...
-    pass
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 
 class Car(models.Model):
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    name = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.name
 
 
 class Topping(models.Model):
@@ -65,3 +77,6 @@ class Membership(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     date_joined = models.DateField()
     invite_reason = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.invite_reason
